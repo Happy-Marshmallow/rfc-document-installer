@@ -45,14 +45,18 @@ class Task(object):
 if __name__ == '__main__':
     print("Enter Download Path : ")
     downloadPath = input()
-    # ~ and symbols read
     if os.path.isdir(downloadPath):
         print("Please Download Folder :")
         downloadFolder = input()
         os.chdir(downloadPath)
         if not (os.path.exists(downloadFolder)):
             os.mkdir(downloadFolder)
-        os.chdir(downloadPath + "/" + downloadFolder)
+
+        if os.system != "Windows":
+            os.chdir(downloadPath + "\\" + downloadFolder)
+        else:
+            os.chdir(downloadPath + "/" + downloadFolder)
+
         task = Task()
         task.run()
     else:
